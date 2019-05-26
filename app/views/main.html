@@ -1,0 +1,42 @@
+<h1>Upload an image/pdf file and preview</h1>
+<hr>
+
+<div>
+
+  <label for="fileToUpload">
+    <div class="btn btn-primary">Choose a File</div>
+    
+    <input type="file" style="display:none;" ng-model-instant id="fileToUpload" multiple
+      onchange="angular.element(this).scope().uploadImagem(this)" />
+  </label>
+
+  <div ng-show="files.length" class="form-group col-xs-10">
+    <div ng-repeat="file in files.slice(0)">
+      <span class='label label-info'>{{file.webkitRelativePath || file.name}}
+      </span>
+      <a class="btn btn-default" style="border: none;" data-toggle="modal" data-target="#myModal">
+        <input type="button" value="Preview" ng-click="showImage()" />
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+          <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Image/Pdf Previewer</h4>
+           </div>
+           <div class="modal-body">
+    <div class="corpoConfirma" onloadstart="">
+      <object id="teste1" data="{{pdfContent}}" type="{{type}}" style="width:100%; height:560px">
+    </div>
+    </div>
+  
+  <div class="modal-footer">
+    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+  </div>
+</div>
+</div>
